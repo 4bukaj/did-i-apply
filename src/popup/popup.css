@@ -1,0 +1,329 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 380px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #fafafa;
+}
+
+#app {
+  padding: 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #111;
+}
+
+#settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.15s ease;
+}
+
+#settings-btn:hover {
+  background: #f0f0f0;
+  border-color: #e0e0e0;
+  color: #555;
+}
+
+/* Settings panel */
+#settings-panel {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  animation: slideDown 0.15s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#settings-panel label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+#settings-panel input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  margin-bottom: 10px;
+  transition: border-color 0.15s ease;
+  background: #fafafa;
+}
+
+#settings-panel input:focus {
+  outline: none;
+  border-color: #333;
+  background: #fff;
+}
+
+#save-settings {
+  width: 100%;
+  padding: 9px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+#save-settings:hover {
+  background: #333;
+}
+
+.hint {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.hint b {
+  color: #888;
+}
+
+/* Loading */
+#loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+}
+
+#loading p {
+  color: #999;
+  font-size: 13px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid #e8e8e8;
+  border-top-color: #555;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 0;
+  text-align: center;
+}
+
+.empty-state p {
+  color: #888;
+  font-size: 13px;
+}
+
+.empty-state .hint {
+  margin-top: 0;
+}
+
+/* Job info */
+#job-info {
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.job-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #111;
+  margin-bottom: 3px;
+}
+
+.job-company {
+  color: #777;
+  font-size: 13px;
+}
+
+.job-salary {
+  color: #16764a;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Status banners */
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.status-found {
+  background: #fef9ee;
+  color: #a16207;
+  border: 1px solid #fde68a;
+}
+
+.status-new {
+  background: #f0f5ff;
+  color: #4a6fa5;
+  border: 1px solid #c7d8f0;
+}
+
+.status-success {
+  background: #f0faf4;
+  color: #16764a;
+  border: 1px solid #bbf0d0;
+}
+
+/* Application list */
+#applications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.application-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: border-color 0.15s ease;
+}
+
+.application-card:hover {
+  border-color: #d0d0d0;
+}
+
+.application-card .app-title {
+  font-weight: 500;
+  font-size: 13px;
+  color: #222;
+}
+
+.application-card .app-salary {
+  font-size: 12px;
+  color: #16764a;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.application-card .app-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Add button */
+#add-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#add-btn:hover {
+  background: #333;
+}
+
+#add-btn:disabled {
+  background: #888;
+  cursor: default;
+}
+
+.btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+/* Error */
+.error-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.error-banner svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hidden {
+  display: none !important;
+}

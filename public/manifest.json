@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Did I Apply?",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6pyGXYPNY/9uQvf05T3IU/amnxeiUq2Zt/VvNA0Ux0RpJVS7oLffur7RZBb5nVPR28JLgLWb167SlASEJBPwCdN24o8WVlXhIfDh9ecMvwzlooiWUeWetbuY0IY5Lr5OPavr3U37f9z9snvD49+OGXXcFHOsmojTDNmxCr4PIZ0yCBY85a+DitA0R2H9QmRJAF4/QDrD6Zp3lN+pfDDogePRNTnJAfEDgnO1BoKnBnRlV1L5OsuHRAw50asLf4cFPdhv60/tAIY+9ganx2njp1eY+DsgfPF5SrTLglOItICszHecEfuQ4PVmUY1+UW+wmiAARIJkCB8RPUUa8sFfbQIDAQAB",
+  "version": "1.0.0",
+  "description": "Track your job applications across LinkedIn and justjoin.it",
+  "permissions": [
+    "identity",
+    "activeTab",
+    "storage"
+  ],
+  "oauth2": {
+    "client_id": "836781091224-vlimqfo7gp38tq2dvgrkug46u1hdimb4.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets"
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.linkedin.com/jobs/*"
+      ],
+      "js": ["content-linkedin.js"]
+    },
+    {
+      "matches": [
+        "*://*.justjoin.it/*"
+      ],
+      "js": ["content-justjoinit.js"]
+    }
+  ]
+}
