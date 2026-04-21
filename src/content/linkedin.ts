@@ -32,8 +32,10 @@ function extractJobInfo(): JobInfo | null {
   let salary: string | null = null;
 
   for (const selector of companySelectors) {
-    const el = document.querySelector(selector);
-    const text = el?.textContent?.trim();
+    const el =
+      document.querySelector(selector);
+    const text =
+      el?.textContent?.trim();
     if (text) {
       company = text;
       break;
@@ -41,8 +43,10 @@ function extractJobInfo(): JobInfo | null {
   }
 
   for (const selector of titleSelectors) {
-    const el = document.querySelector(selector);
-    const text = el?.textContent?.trim();
+    const el =
+      document.querySelector(selector);
+    const text =
+      el?.textContent?.trim();
     if (text) {
       jobTitle = text;
       break;
@@ -50,8 +54,10 @@ function extractJobInfo(): JobInfo | null {
   }
 
   for (const selector of salarySelectors) {
-    const el = document.querySelector(selector);
-    const text = el?.textContent?.trim();
+    const el =
+      document.querySelector(selector);
+    const text =
+      el?.textContent?.trim();
     if (text) {
       salary = text;
       break;
@@ -62,16 +68,23 @@ function extractJobInfo(): JobInfo | null {
 
   return {
     company,
-    jobTitle: jobTitle || "Unknown Position",
+    jobTitle:
+      jobTitle || "Unknown Position",
     salary: salary || "",
-    url: window.location.href,
+    url: globalThis.location.href,
     platform: "linkedin",
   };
 }
 
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message.type === "GET_JOB_INFO") {
-    sendResponse({ data: extractJobInfo() });
-  }
-  return true;
-});
+chrome.runtime.onMessage.addListener(
+  (message, _sender, sendResponse) => {
+    if (
+      message.type === "GET_JOB_INFO"
+    ) {
+      sendResponse({
+        data: extractJobInfo(),
+      });
+    }
+    return true;
+  },
+);

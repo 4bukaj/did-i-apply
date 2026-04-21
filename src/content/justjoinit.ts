@@ -4,9 +4,8 @@ function extractJobInfo(): JobInfo | null {
   const companySelectors = [
     "[data-testid='organisation-name']",
     "[data-test-id='organisation-name']",
-    // Offer detail page: company name is typically in a heading or link near the top
     "h2 a[href*='/company/']",
-    ".css-1x9zltl", // justjoin uses generated class names — these are fallbacks
+    ".css-1x9zltl",
     "h2",
   ];
 
@@ -21,7 +20,6 @@ function extractJobInfo(): JobInfo | null {
     "[data-test-id='section-salary']",
     "[data-testid='salary']",
     "[data-test-id='salary']",
-    // justjoin.it typically shows salary in a prominent span/div near the top
     "span[class*='salary']",
     "div[class*='salary']",
   ];
@@ -31,8 +29,10 @@ function extractJobInfo(): JobInfo | null {
   let salary: string | null = null;
 
   for (const selector of companySelectors) {
-    const el = document.querySelector(selector);
-    const text = el?.textContent?.trim();
+    const el =
+      document.querySelector(selector);
+    const text =
+      el?.textContent?.trim();
     if (text) {
       company = text;
       break;
@@ -40,8 +40,10 @@ function extractJobInfo(): JobInfo | null {
   }
 
   for (const selector of titleSelectors) {
-    const el = document.querySelector(selector);
-    const text = el?.textContent?.trim();
+    const el =
+      document.querySelector(selector);
+    const text =
+      el?.textContent?.trim();
     if (text) {
       jobTitle = text;
       break;
@@ -49,8 +51,10 @@ function extractJobInfo(): JobInfo | null {
   }
 
   for (const selector of salarySelectors) {
-    const el = document.querySelector(selector);
-    const text = el?.textContent?.trim();
+    const el =
+      document.querySelector(selector);
+    const text =
+      el?.textContent?.trim();
     if (text) {
       salary = text;
       break;
@@ -61,16 +65,23 @@ function extractJobInfo(): JobInfo | null {
 
   return {
     company,
-    jobTitle: jobTitle || "Unknown Position",
+    jobTitle:
+      jobTitle || "Unknown Position",
     salary: salary || "",
-    url: window.location.href,
+    url: globalThis.location.href,
     platform: "justjoinit",
   };
 }
 
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-  if (message.type === "GET_JOB_INFO") {
-    sendResponse({ data: extractJobInfo() });
-  }
-  return true;
-});
+chrome.runtime.onMessage.addListener(
+  (message, _sender, sendResponse) => {
+    if (
+      message.type === "GET_JOB_INFO"
+    ) {
+      sendResponse({
+        data: extractJobInfo(),
+      });
+    }
+    return true;
+  },
+);
